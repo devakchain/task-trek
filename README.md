@@ -11,7 +11,7 @@ Task Manager built using **React**, component state, props, and local storage.
 - React Hooks: `useState`, `useEffect`
 - Responsive stiil not finish yet in prograss
 
-## 🧠 What I Learned
+## 🧠 What I implemented in this app
 - React fundamentals: components, props, state
 - Controlled forms in React
 - Basic styling and layout
