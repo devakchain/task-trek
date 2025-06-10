@@ -1,7 +1,7 @@
 # See Live website
 https://task-trek102.netlify.app/
 
-# 📝 Task Manager App
+# Task Manager App
 
 Task Manager built using **React**, component state, props, and local storage.
 
