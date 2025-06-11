@@ -6,7 +6,7 @@ https://task-trek102.netlify.app/
 Task Manager built using **React**, component state, props, and local storage.
 
 ## 🚀 Features
-- Add, update, delete, and mark tasks as completed
+- Add, update, delete, and mark tasks as completed and drag and drop
 - Data persistence using **localStorage**
 - React Hooks: `useState`, `useEffect`
 - Responsive stiil not finish yet in prograss
