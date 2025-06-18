@@ -1,15 +1,38 @@
 .drop_area {
   width: 100%;
   height: 100px;
-  columns: #dcdcdc;
+  background-color: #fdfdfd;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 15px;
   opacity: 1;
   transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 16px;
+  text-align: center;
 }
 
 .hide_drop {
   opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .drop_area {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drop_area {
+    font-size: 13px;
+    height: 80px;
+  }
 }

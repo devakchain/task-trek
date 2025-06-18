@@ -2,9 +2,33 @@
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .task_column_icon {
   width: 30px;
   margin-right: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .task_column_heading {
+    font-size: 16px;
+  }
+
+  .task_column_icon {
+    width: 25px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .task_column_heading {
+    font-size: 15px;
+  }
+
+  .task_column_icon {
+    width: 20px;
+    margin-right: 3px;
+  }
 }

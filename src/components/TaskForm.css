@@ -3,12 +3,16 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #dcdcdc;
+  padding: 10px;
+  flex-wrap: wrap;
 }
 
 .app_header > form {
   width: 45%;
+  min-width: 300px;
 }
 
+/* Task Input Styling */
 .task_input {
   font-size: 20px;
   font-weight: 500;
@@ -25,12 +29,16 @@
   color: #686868;
 }
 
+/* Bottom Line Flex Container */
 .task_form_bottom_line {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
+/* Dropdown for status */
 .task_status {
   font-size: 16px;
   font-weight: 500;
@@ -41,6 +49,7 @@
   padding: 0 5px;
 }
 
+/* Submit button */
 .task_submit {
   font-size: 16px;
   font-weight: 500;
@@ -52,4 +61,50 @@
   margin-left: 10px;
   border: none;
   cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .app_header > form {
+    width: 80%;
+  }
+
+  .task_form_bottom_line {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task_submit {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .task_status {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .app_header > form {
+    width: 98%;
+    justify-content: center;
+  }
+
+  .task_input {
+    font-size: 18px;
+  }
+
+  .task_submit {
+    font-size: 15px;
+    height: 38px;
+    width: 80%;
+    margin-top: 5px;
+  }
+
+  .task_status {
+    font-size: 15px;
+    height: 38px;
+    width: 80%;
+    margin-top: 5px;
+  }
 }
