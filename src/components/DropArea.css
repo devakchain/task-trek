@@ -1,38 +1,58 @@
 .drop_area {
-  width: 100%;
-  height: 100px;
-  background-color: #fdfdfd;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  opacity: 1;
-  transition: all 0.2s ease-in-out;
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 12px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, border 0.3s ease;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #555;
-  font-size: 16px;
-  text-align: center;
 }
 
-.hide_drop {
-  opacity: 0;
+.drop_area.drag-over {
+  background-color: rgba(56, 189, 248, 0.15);
+  border: 2px dashed #38bdf8;
+}
+
+.drop_hint {
+  color: #38bdf8;
+  font-size: 14px;
+  font-weight: bold;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
+  opacity: 0.95;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Responsive adjustments */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+}
+
+/* רספונסיביות */
 @media (max-width: 768px) {
   .drop_area {
-    font-size: 14px;
-    padding: 12px;
+    height: 40px;
+    margin: 8px 0;
+  }
+
+  .drop_hint {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .drop_area {
-    font-size: 13px;
-    height: 80px;
+    height: 36px;
+  }
+
+  .drop_hint {
+    font-size: 12px;
   }
 }

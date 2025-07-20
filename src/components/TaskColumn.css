@@ -1,34 +1,93 @@
+.task_column {
+  flex: 1;
+  min-width: 300px;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  transition: all 0.3s ease-in-out;
+}
+
 .task_column_heading {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f8fafc;
 }
 
 .task_column_icon {
-  width: 30px;
-  margin-right: 5px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Scrollbar עיצוב גלילה */
+.task_column::-webkit-scrollbar {
+  width: 8px;
+}
+.task_column::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+.task_column::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* רספונסיביות */
+@media (max-width: 1024px) {
+  .task_column {
+    padding: 18px 16px;
+    margin: 8px;
+  }
+
   .task_column_heading {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .task_column_icon {
-    width: 25px;
-    margin-right: 4px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .task_column {
+    min-width: 260px;
+    padding: 16px;
+  }
+
+  .task_column_heading {
+    font-size: 18px;
+  }
+
+  .task_column_icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
 @media (max-width: 480px) {
+  .task_column {
+    padding: 14px;
+    min-width: 240px;
+  }
+
   .task_column_heading {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .task_column_icon {
-    width: 20px;
-    margin-right: 3px;
+    width: 22px;
   }
 }

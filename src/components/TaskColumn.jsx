@@ -12,30 +12,40 @@ function TaskColumn({
   setActiveCard,
   onDrop,
 }) {
+  const filteredTasks = tasks
+    .map((task, i) => ({ ...task, originalIndex: i }))
+    .filter((task) => task.status === status);
+
   return (
     <div className="task_column">
       <h2 className="task_column_heading">
-        <img className="task_column_icon" src={icon} /> {title}
+        <img className="task_column_icon" src={icon} alt={`${title} icon`} />{" "}
+        {title}
       </h2>
 
-      <DropArea onDrop={() => onDrop(status, 0)} />
+      <DropArea
+        onDrop={(cardIndex, fromStatus) =>
+          onDrop(cardIndex, fromStatus, status, 0)
+        }
+      />
 
-      {tasks.map((task, index) => {
-        return (
-          task.status === status && (
-            <React.Fragment key={index}>
-              <TaskCard
-                title={task.task}
-                tags={task.tags}
-                handleDelete={handleDelete}
-                index={index}
-                setActiveCard={setActiveCard}
-              />
-              <DropArea onDrop={() => onDrop(status, index + 1)} />
-            </React.Fragment>
-          )
-        );
-      })}
+      {filteredTasks.map((task, i) => (
+        <React.Fragment key={task.originalIndex}>
+          <TaskCard
+            title={task.task}
+            tags={task.tags}
+            handleDelete={handleDelete}
+            index={task.originalIndex}
+            status={status}
+            setActiveCard={setActiveCard}
+          />
+          <DropArea
+            onDrop={(cardIndex, fromStatus) =>
+              onDrop(cardIndex, fromStatus, status, i + 1)
+            }
+          />
+        </React.Fragment>
+      ))}
     </div>
   );
 }

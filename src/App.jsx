@@ -7,7 +7,6 @@ import doing from "../public/doing.png";
 import done from "../public/done.png";
 
 const oldData = localStorage.getItem("tasks");
-console.log(oldData);
 
 function App() {
   const [tasks, setTasks] = useState(JSON.parse(oldData) || []);
@@ -17,23 +16,23 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  function handleDelete(taskIndex) {
-    const newTask = tasks.filter((task, index) => index !== taskIndex);
-    setTasks(newTask);
+  function handleDelete(index) {
+    const newTasks = tasks.filter((_, i) => i !== index);
+    setTasks(newTasks);
   }
 
-  function onDrop(status, position) {
-    if (activeCard == null || activeCard === undefined) return;
+  function onDrop(cardIndex, fromStatus, toStatus, dropIndex) {
+    if (cardIndex == null) return;
 
-    const taskToMove = tasks[activeCard];
-    const updatedTask = tasks.filter((tasks, index) => index !== activeCard);
+    const taskToMove = tasks[cardIndex];
+    if (!taskToMove) return;
 
-    updatedTask.splice(position, 0, {
-      ...taskToMove,
-      status: status,
-    });
-    setTasks(updatedTask);
+    const updatedTasks = tasks.filter((_, i) => i !== cardIndex);
+    const updatedTask = { ...taskToMove, status: toStatus };
+    updatedTasks.splice(dropIndex, 0, updatedTask);
+    setTasks(updatedTasks);
   }
+
   return (
     <div className="app">
       <TaskForm setTasks={setTasks} />
@@ -42,7 +41,7 @@ function App() {
           title="To Do"
           icon={todo}
           tasks={tasks}
-          status={"todo"}
+          status="todo"
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
           onDrop={onDrop}
@@ -51,7 +50,7 @@ function App() {
           title="Doing"
           icon={doing}
           tasks={tasks}
-          status={"doing"}
+          status="doing"
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
           onDrop={onDrop}
@@ -60,7 +59,7 @@ function App() {
           title="Done"
           icon={done}
           tasks={tasks}
-          status={"done"}
+          status="done"
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
           onDrop={onDrop}

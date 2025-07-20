@@ -3,23 +3,34 @@ import "./TaskCard.css";
 import Tag from "./Tag";
 import trash from "../../public/trash.png";
 
-function TaskCard({ title, tags, handleDelete, index, setActiveCard }) {
+function TaskCard({
+  title,
+  tags = [],
+  handleDelete,
+  index,
+  setActiveCard,
+  status,
+}) {
   return (
     <article
       className="task_card"
       draggable
-      onDragStart={() => setActiveCard(index)}
+      onDragStart={(e) => {
+        e.dataTransfer.setData("cardIndex", index); // שולח את האינדקס
+        e.dataTransfer.setData("status", status); // שולח את הסטטוס הנוכחי
+        setActiveCard(index);
+      }}
       onDragEnd={() => setActiveCard(null)}
     >
       <p className="task_text">{title}</p>
       <div className="task_card_bottom_line">
         <div className="task_card_tags">
-          {tags.map((tag, index) => {
-            return <Tag key={index} tagName={tag} selected={true} />;
-          })}
+          {tags.map((tag, i) => (
+            <Tag key={i} tagName={tag} selected={true} />
+          ))}
         </div>
         <div className="task_delete" onClick={() => handleDelete(index)}>
-          <img src={trash} className="delete_icon" />
+          <img src={trash} alt="Delete" className="delete_icon" />
         </div>
       </div>
     </article>
