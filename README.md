@@ -80,5 +80,5 @@ GitHub: [github.com/shmoelyitzhak](https://github.com/shmoelyitzhak)
 
 ## License
 
-This project is intended for educational, personal, or portfolio use only.  
-Please contact the author for extended usage rights or collaboration.
+This project is open for everyone to use – for any purpose.  
+No restrictions. No attribution required. Just build something awesome.
